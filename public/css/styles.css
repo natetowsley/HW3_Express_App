@@ -1,0 +1,28 @@
+:root {
+    --bs-primary-rgb: 0, 119, 182;
+    --bs-secondary-rgb: 3, 4, 94;
+}
+
+body {
+    background-color: skyblue;
+}
+
+#sunImg {
+    margin-top: 50px;
+    width: 300px;
+}
+
+.titleText {
+    margin: 0 auto;
+    width:max-content;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 2px black;
+}
+
+.search {
+    margin: 0 auto;
+    width: 60%;
+}

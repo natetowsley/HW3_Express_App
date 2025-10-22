@@ -7,7 +7,7 @@ app.use(express.static("public"));
 
 // root route
 app.get('/', (req, res) => {
-    res.send('Hello Express app!');
+    res.render('home.ejs');
 });
 
 // start web server
