@@ -5,9 +5,26 @@
     <title>Weather</title>
 </head>
 <body>
+    <%- include("partials/nav.ejs") %>
     <div id="cityInfo">
-        <h1 id="cityName" class="bg-primary text-white"><%= city.city%></h1>
-        <h5 id="coords"><%=city.latitude%>, <%=city.longitude%></h5>
+        <h1 id="cityName" class="text-center"><%= city.city%></h1>
+        <h5 id="coords" class="text-center"><%=data.lat%>, <%=data.lon%></h5>
+    </div>
+    <div id="current" class="text-center">
+        <!-- <img WEATHER IMAGE HERE> -->
+        <h2 id="temp"><%=data.current.temp%> °F</h2>
+        <div class="myRow">
+            <div id="clouds">
+                <p class="fs-4">Clouds</p>    
+                <!-- <img Clouds IMAGE HERE> -->
+                <p class="fs-4"><%=data.current.clouds%></p>
+            </div>
+            <div id="wind">
+                <p class="fs-4">Wind</p>    
+                <!-- <img WIND IMAGE HERE> -->
+                <p class="fs-4"><%=data.current.wind_speed%> mph</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
