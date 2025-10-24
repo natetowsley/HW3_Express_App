@@ -6,25 +6,37 @@
 </head>
 <body>
     <%- include("partials/nav.ejs") %>
-    <div id="cityInfo">
+    <div class="smallCard" id="cityInfo">
         <h1 id="cityName" class="text-center"><%= city.city%></h1>
         <h5 id="coords" class="text-center"><%=data.lat%>, <%=data.lon%></h5>
     </div>
     <div id="current" class="text-center">
+        <h2 id="temp" class="smallCard"><%=data.current.temp%> °F</h2>
         <!-- <img WEATHER IMAGE HERE> -->
-        <h2 id="temp"><%=data.current.temp%> °F</h2>
         <div class="myRow">
-            <div id="clouds">
-                <p class="fs-4">Clouds</p>    
-                <!-- <img Clouds IMAGE HERE> -->
-                <p class="fs-4"><%=data.current.clouds%></p>
+            <div class="smallCard">
+                <p class="fs-4">Clouds</p> 
+                <img class="smallCardImg" src="\img\2106101.png">
+                <% if (data.current.clouds >= 80) { %>
+                    <p class="fs-5">Very Cloudy</p>
+                <% } else if (data.current.clouds >= 40) { %>
+                    <p class="fs-5">Cloudy</p>
+                <% } else if (data.current.clouds >= 10) { %>
+                    <p class="fs-5">Slightly Cloudy</p>
+                <% } else { %>
+                    <p class="fs-5">No Clouds</p>
+                <% } %>
             </div>
-            <div id="wind">
+            <div class="smallCard">
                 <p class="fs-4">Wind</p>    
-                <!-- <img WIND IMAGE HERE> -->
+                <img class="smallCardImg" src="\img\wind.png">
                 <p class="fs-4"><%=data.current.wind_speed%> mph</p>
             </div>
         </div>
+    </div>
+    <br>
+    <div id="week">
+
     </div>
 </body>
 </html>

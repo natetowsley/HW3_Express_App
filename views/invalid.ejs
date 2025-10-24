@@ -5,9 +5,12 @@
     <title>Zip Invalid</title>
 </head>
 <body>
+    <%- include("partials/nav.ejs") %>
     <div id="invalidDiv">
-        <img id="sad" src="\img\smiley-sad-face-png-26.png">
-        <h1 class="bg-primary text-white">The zip you entered is invalid</h1>
-    </div>>
+        <h1 class="text-center text-white"><span class="text-danger">ERROR</span>: Invalid Zip :(</h1>
+        <p class="fs-2 text-center text-white">Please return home and try again</p>
+    </div>
+    <br>
+    <a id="errorHomeLink" href="/"><button class="btn bg-primary text-white" id="errorHomeBtn">Home</button></a>
 </body>
 </html>

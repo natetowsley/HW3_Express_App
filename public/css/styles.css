@@ -22,6 +22,11 @@ body {
     box-shadow: 4px 4px 2px black;
 }
 
+#cityInfo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .myRow {
     display: flex;
     flex-wrap: wrap;
@@ -46,13 +51,40 @@ body {
 }
 
 #invalidDiv {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin:0 auto;
+    align-items: center;
 }
 
 #sad {
     width: 200px;
     margin: 0 auto;
+}
+
+#errorHomeLink {
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+}
+
+#errorHomeBtn {
+    width: 90px;
+    height: auto;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.smallCardImg {
+    width: 120px;
+}
+
+.smallCard {
+    margin:0 auto;
+    width:fit-content;
+    background-color: #afe8ff;
+    border: solid 2px black;
+    padding: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
 }
