@@ -21,10 +21,11 @@ app.get('/weather', async(req, res) => {
         res.redirect(`/invalid`); // stack overflow
     }
     console.log(city);
-    let url = `https://api.openweathermap.org/data/3.0/onecall?lat=${city.latitude}&lon=${city.longitude}&exclude=minutely,alerts,daily&units=imperial&appid=${KEY}`;
+    let url = `https://api.openweathermap.org/data/3.0/onecall?lat=${city.latitude}&lon=${city.longitude}&exclude=minutely,alerts,hourly&units=imperial&appid=${KEY}`;
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
+    console.log(data.current.weather);
     res.render('weather.ejs', {city, data});
 });
 

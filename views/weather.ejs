@@ -2,41 +2,46 @@
 <html lang="en">
 <head>
     <%- include("partials/head.ejs") %>
-    <title>Weather</title>
+    <title><%= city.city %>, <%= city.state_abbr %> Weather</title>
 </head>
 <body>
     <%- include("partials/nav.ejs") %>
     <div class="smallCard" id="cityInfo">
-        <h1 id="cityName" class="text-center"><%= city.city%></h1>
+        <h1 id="cityName" class="text-center"><%= city.city %>, <%= city.state_abbr %></h1>
         <h5 id="coords" class="text-center"><%=data.lat%>, <%=data.lon%></h5>
     </div>
     <div id="current" class="text-center">
-        <h2 id="temp" class="smallCard"><%=data.current.temp%> °F</h2>
-        <!-- <img WEATHER IMAGE HERE> -->
+        <div id="currTempCon" class="smallCard">
+            <h2 id="temp"><%=data.current.temp%> °F</h2>
+            <img width="250px" src="<%='https://openweathermap.org/img/wn/' + data.current.weather[0].icon + '@2x.png'%>">
+            <p class="fs-3"><%= data.current.weather[0].description %></p>
+        </div>
+        <br>
         <div class="myRow">
             <div class="smallCard">
-                <p class="fs-4">Clouds</p> 
-                <img class="smallCardImg" src="\img\2106101.png">
-                <% if (data.current.clouds >= 80) { %>
-                    <p class="fs-5">Very Cloudy</p>
-                <% } else if (data.current.clouds >= 40) { %>
-                    <p class="fs-5">Cloudy</p>
-                <% } else if (data.current.clouds >= 10) { %>
-                    <p class="fs-5">Slightly Cloudy</p>
-                <% } else { %>
-                    <p class="fs-5">No Clouds</p>
-                <% } %>
+                <h4>UV Index</h4> 
+                <img class="smallCardImg" src="\img\4376714.png">
+                <p class="fs-4">Peak: <%= Math.ceil(data.current.uvi) %></p>
             </div>
             <div class="smallCard">
-                <p class="fs-4">Wind</p>    
+                <h4>Wind</h4>    
                 <img class="smallCardImg" src="\img\wind.png">
                 <p class="fs-4"><%=data.current.wind_speed%> mph</p>
             </div>
         </div>
     </div>
-    <br>
-    <div id="week">
-
+    <br><hr><br>
+    <div id="week" class="myRow">
+        <% for (let i of data.daily) {%>
+            <div class="smallCard">
+                <h4 class="text-center"><%=new Date(i.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' }) %></h4> <!--Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString--> 
+                <img class="smallCardImg" src="<%='https://openweathermap.org/img/wn/' + i.weather[0].icon + '@2x.png'%>">
+                <p class="fs-5 text-center">Low: <%=i.temp.min%> °F</p>
+                <p class="fs-5 text-center">High: <%=i.temp.max%> °F</p>
+            </div>
+        <% } %>
     </div>
+    <br>
+    <%- include("partials/footer.ejs") %>
 </body>
 </html>
