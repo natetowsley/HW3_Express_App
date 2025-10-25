@@ -1,8 +1,9 @@
 import express from 'express';
+import 'dotenv/config';
 
-const KEY = "1615e43df7fb9f0e01249749512bfd86";
 const cities = (await import('cities')).default;
 const app = express();
+const KEY = process.env.OPENWEATHER_KEY; // Looked into this to hide my API key
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
