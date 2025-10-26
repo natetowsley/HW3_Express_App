@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs") %>
+    <title>Major US Cities Forecasts</title>
+</head>
+<body>
+    <%- include("partials/nav.ejs") %>
+        <% for (let i = 0; i < forecasts.length; i++) {%>
+            <div class="smallCard" id="cityInfo">
+                <h1 id="cityName" class="text-center"><%= names[i].city %>, <%= names[i].state_abbr %></h1>
+            </div>
+            <div id="forecasts" class="myRow">
+            <% for (let day of forecasts[i].daily) {%>
+                <div class="foreCard">
+                    <h5 class="text-center"><%=new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' }) %></h5> <!--Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString--> 
+                    <img class="smallCardImg" src="<%='https://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'%>">
+                    <p class="fs-6 text-center">Low: <%=day.temp.min%> °F</p>
+                    <p class="fs-6 text-center">High: <%=day.temp.max%> °F</p>
+                </div>
+            <% } %>
+            </div>
+            <br><br>
+        <% } %>
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>

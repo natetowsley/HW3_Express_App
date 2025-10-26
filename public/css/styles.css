@@ -105,6 +105,19 @@ hr {
     border-radius: 10px;
 }
 
+.foreCard {
+    margin:0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width:fit-content;
+    background-color: #afe8ff;
+    border: solid 2px black;
+    padding: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 10px;
+}
+
 footer {
     position: relative;
     bottom: 0;

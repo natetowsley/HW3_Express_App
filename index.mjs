@@ -16,7 +16,6 @@ app.get('/', (req, res) => {
 // weather route
 app.get('/weather', async(req, res) => {
     let zip = req.query.zip;
-    console.log(zip);
     let city = cities.zip_lookup(zip);
     if (city == undefined) {
         res.redirect(`/invalid`); // stack overflow
@@ -25,13 +24,36 @@ app.get('/weather', async(req, res) => {
     let url = `https://api.openweathermap.org/data/3.0/onecall?lat=${city.latitude}&lon=${city.longitude}&exclude=minutely,alerts,hourly&units=imperial&appid=${KEY}`;
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
     console.log(data.current.weather);
     res.render('weather.ejs', {city, data});
 });
 
 app.get('/invalid', (req, res) => {
     res.render('invalid.ejs');
+});
+
+app.get('/majorCities', async(req, res) => {
+    let majorZips = ["90005", "10001", "94102", "77030", "75220", "33134", "19111", "02222", "98101"];
+    let names = [];
+    let forecasts = [];
+    for (let i of majorZips) {
+        let city = cities.zip_lookup(i);
+
+        if (!city) {
+            console.log(`Failed to find a city for ${zip}`);
+            continue;
+        }
+        names.push(city);
+    }
+
+    for (let city of names) {
+       let url = `https://api.openweathermap.org/data/3.0/onecall?lat=${city.latitude}&lon=${city.longitude}&exclude=current,minutely,alerts,hourly&units=imperial&appid=${KEY}`;
+        let response = await fetch(url);
+        let data = await response.json();
+        forecasts.push(data); 
+    }
+
+    res.render('majorCities.ejs', {names, forecasts});
 });
 
 // start web server
