@@ -14,14 +14,15 @@
         <h4 class="titleText bg-secondary text-white text-center">Check the Weather in any US City!</h4>
     </div>
 
-    <div id="searchBox" class="search input-group input-group-lg">
-        <span class="input-group-text" id="inputGroup-sizing-lg">Enter Zip Code</span>
-        <input id="cityInput" type="number" min="0" max="99999" class="form-control" aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-lg">
-        <button id="searchBtn" class= "btn bg-secondary text-white">Search</button>
-    </div>
+    <form action="/weather" method="GET">
+        <div id="searchBox" class="search input-group input-group-lg">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Enter Zip Code</span>
+            <input id="cityInput" type="number" name="zip" min="0" max="99999" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-lg">
+            <button id="searchBtn" class= "btn bg-secondary text-white">Search</button>
+        </div>
+    </form>
     <%- include("partials/footer.ejs") %>
-    <script src="\js\script.js"></script>
 </body>
 
 </html>
